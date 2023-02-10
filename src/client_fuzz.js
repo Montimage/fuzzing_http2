@@ -9,6 +9,7 @@ function main(){
       process.exit(1);
     }
     const [ip, port, numberOfRequests ] = args.slice(0,3);
+    var index=0
     var httpMethod=args[3];
     var httpPostPath= ["/npcf-am-policy-control/v1/policies","/nudm-sdm/v2/imsi-460020301001001/sdm-subscriptions","/nausf-auth/v1/ue-authentications"];
     var httpGetPath=["/nudm-sdm/v2/imsi-460020301001001?dataset-names=AM,SMF_SEL"];
@@ -21,19 +22,19 @@ function main(){
     switch(httpMethod.toUpperCase()){
         case('POST'):
              index = Math.floor(Math.random() * httpPostPath.length);
-             http2Fuzzer.requestFuzz(client,httpPostPath[index]);
+             http2Fuzzer.requestFuzz(client,'POST',httpPostPath[index]);
              break;
         case("GET"):
             index = Math.floor(Math.random() * httpGetPath.length);
-             http2Fuzzer.requestFuzz(client,httpGetPath[index]);
+             http2Fuzzer.requestFuzz(client,'GET',httpGetPath[index]);
              break;
         case("PUT"):
              index = Math.floor(Math.random() * httpPutPath.length);
-             http2Fuzzer.putFuzz(client,httpPutPath[index]);
+             http2Fuzzer.putFuzz(client,'PUT',httpPutPath[index]);
              break;
         case ("DELETE"):
             index = Math.floor(Math.random() * httpDeletePath.length);
-            http2Fuzzer.deleteFuzz(client,httpDeletePath[index]);
+            http2Fuzzer.deleteFuzz(client,'DELETE',httpDeletePath[index]);
             break;
         default:
             console.log("Insert a valid http2 method: POST - GET - DELETE - PUT");

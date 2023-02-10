@@ -38,7 +38,7 @@ class Http2Fuzzer{
       }
 
       requestFuzz(client,method,path){
-
+        console.log(method,' ', path)
         
         for (let i = 0; i <  this.numberOfRequests ; i++) {
             var urlGenerated=this.generateRandomUrl(path);
