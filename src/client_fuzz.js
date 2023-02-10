@@ -30,11 +30,11 @@ function main(){
              break;
         case("PUT"):
              index = Math.floor(Math.random() * httpPutPath.length);
-             http2Fuzzer.putFuzz(client,'PUT',httpPutPath[index]);
+             http2Fuzzer.requestFuzz(client,'PUT',httpPutPath[index]);
              break;
         case ("DELETE"):
             index = Math.floor(Math.random() * httpDeletePath.length);
-            http2Fuzzer.deleteFuzz(client,'DELETE',httpDeletePath[index]);
+            http2Fuzzer.requestFuzz(client,'DELETE',httpDeletePath[index]);
             break;
         default:
             console.log("Insert a valid http2 method: POST - GET - DELETE - PUT");
