@@ -22,8 +22,7 @@ class Http2Fuzzer{
           return client;
       }
       generateRandomUrl(url) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;\'///:",.<>/?\\';
-        const hex_chars='\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1F00-\u1FFF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\u3400-\u4DBF';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;\'///:",.<>/?\\'+'\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1F00-\u1FFF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\u3400-\u4DBF';
         
         const length = Math.floor(Math.random() * 20) + 4;
 
@@ -38,17 +37,15 @@ class Http2Fuzzer{
 
       }
 
-      postFuzz(client){
-        var httpPost= ["/npcf-am-policy-control/v1/policies","/nudm-sdm/v2/imsi-460020301001001/sdm-subscriptions","/nausf-auth/v1/ue-authentications"];
-        const index = Math.floor(Math.random() * httpPost.length);
+      requestFuzz(client,method,path){
 
         
         for (let i = 0; i <  this.numberOfRequests ; i++) {
-            var urlGenerated=this.generateRandomUrl(httpPost[index]);
+            var urlGenerated=this.generateRandomUrl(path);
 
             console.log(`Making request ${i + 1}... with this path: `,urlGenerated);
             const req = client.request({
-                   ':method': 'POST',         
+                   ':method': method,         
                    ':path': urlGenerated
               });
               req.on('response', (headers) => {
@@ -62,14 +59,6 @@ class Http2Fuzzer{
         
 
       } 
-      getFuzz(client){
 
-      }
-      putFuzz(client){
-
-      }
-      deleteFuzz(client){
-
-      }
 }
 module.exports=Http2Fuzzer;
