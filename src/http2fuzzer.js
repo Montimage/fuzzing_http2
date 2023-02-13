@@ -22,7 +22,7 @@ class Http2Fuzzer{
           return client;
       }
       generateRandomUrl(url) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;\'///:",.<>/?\\'+'\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1F00-\u1FFF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\u3400-\u4DBF';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;\'///:",.<>/?\\';
         
         const length = Math.floor(Math.random() * 20) + 4;
 

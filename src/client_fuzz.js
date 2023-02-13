@@ -1,4 +1,4 @@
-const Http2Fuzzer=require('./Http2Fuzzer');
+const Http2Fuzzer=require('./http2fuzzer');
 
 
 function main(){

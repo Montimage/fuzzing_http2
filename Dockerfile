@@ -10,7 +10,7 @@ COPY /src .
 # Set environment variables to allow the client to connect to the server running on localhost at port 8000
 ENV port=8000
 ENV ip=localhost
-ENV reqNumber=100
+ENV reqNumber=250
 ENV httpMethod=GET
 ENV API_HOST=host.docker.internal
 # Start the client
